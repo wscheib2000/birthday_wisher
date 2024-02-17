@@ -10,7 +10,7 @@ birthdays['friend_name'] = birthdays.name # Rename column to not conflict with o
 now = dt.datetime.now()
 
 for (idx, birthday) in birthdays.iterrows():
-    if birthday.month == now.month and birthday.day == now.day:
+    if (birthday.month, birthday.day) == (now.month, now.day):
         # Select letter
         with open(f'letter_templates/letter_{random.randint(1,3)}.txt', 'r') as letter:
             letter_text = letter.read().replace('[NAME]', f'{birthday.friend_name}').replace('Angela', 'Will')
